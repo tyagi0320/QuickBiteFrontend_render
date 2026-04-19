@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TokenService } from './TokenService'; // ✅ NEW: import token handler
+import { TokenService } from './TokenService';
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 
@@ -9,21 +9,17 @@ export const AuthService = {
 
     const data = res.data;
 
-    // ✅ DEBUG (optional but useful)
     console.log("LOGIN RESPONSE:", data);
 
-    // ✅ HANDLE BOTH POSSIBLE BACKEND RESPONSES
-
-    // Case 1: Object response
-    if (data.access_token) {
-      TokenService.setAccessToken(data.access_token);
-    }
-
-    // Case 2: Array response (your backend might return tuple)
-    else if (Array.isArray(data)) {
-      TokenService.setAccessToken(data[0]); // access_token at index 0
-    }
-
+    // ✅ HANDLE YOUR BACKEND RESPONSE (tuple → array)
+    if (Array.isArray(data)) {
+      // FastAPI returning: access_token, refresh_token, user
+      TokenService.setToken(data[0]);
+    } 
+    else if (data.access_token) {
+      // fallback if you later change backend
+      TokenService.setToken(data.access_token);
+    } 
     else {
       console.warn("Unexpected login response format");
     }
