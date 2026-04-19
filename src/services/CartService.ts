@@ -77,7 +77,7 @@ export const CartService = {
       throw new Error("No token found. User not logged in.");
     }
 
-    const res = await axios.get(`${BASE_URL}/cart/`, {
+    const res = await axios.get(`${BASE_URL}/cart`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
