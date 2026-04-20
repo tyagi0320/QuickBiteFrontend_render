@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import { useCart } from '../../context/CartContext';
 import { TokenService } from '../../services/TokenService';
+import { FoodService } from '../../services/FoodService';
 
 export default function FoodItems({ foodData }: any) {
   const API_URL = "http://127.0.0.1:8000"; // Updated to use the correct local IP
@@ -24,7 +25,7 @@ export default function FoodItems({ foodData }: any) {
     <Card sx={{ maxWidth: 345, height: '100%', display: 'flex', flexDirection: 'column' }}>
       <CardMedia
         sx={{ height: 180 }}
-        image={`${API_URL}/images/${foodData.image}`}
+        image={FoodService.getImageUrl(foodData.image)}
         title={foodData.name}
       />
       <CardContent sx={{ flexGrow: 1 }}>
