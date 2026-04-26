@@ -16,7 +16,7 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 const About = () => {
   const values = [
-    { title: "Wider OutReach", desc: "Shipping products to over 50 countries.", icon: <PublicIcon fontSize="large" color="primary" /> },
+    { title: "Wider Outreach", desc: "Shipping products to over 50 countries.", icon: <PublicIcon fontSize="large" color="primary" /> },
     { title: "Fast Delivery", desc: "Lightning-fast shipping with local partners.", icon: <SpeedIcon fontSize="large" color="primary" /> },
     { title: "24/7 Support", desc: "Dedicated team always ready to help.", icon: <SupportAgentIcon fontSize="large" color="primary" /> },
   ];
